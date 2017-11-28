@@ -1,5 +1,1 @@
-﻿  main.cpp
-c:\users\fabian.loayza\documents\git\math\handout\handout\p2 transformations\main.cpp(230): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-c:\users\fabian.loayza\documents\git\math\handout\handout\p2 transformations\math3d.h(176): warning C4715: 'Interpolate': not all control paths return a value
-  Transformations.vcxproj -> C:\Users\fabian.loayza\Documents\git\math\handout\handout\P2 transformations\Debug\Transformations.exe
-  Transformations.vcxproj -> C:\Users\fabian.loayza\Documents\git\math\handout\handout\P2 transformations\Debug\Transformations.pdb (Partial PDB)
+﻿

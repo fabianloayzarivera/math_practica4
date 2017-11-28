@@ -118,24 +118,21 @@ void drawLine(LINE line, COLOUR color = grey, bool doDrawDots = false)
 
 }
 
- void drawCurve(CURVE curve) 
- {	
-	 
-	 for (auto point = curve.P.begin(); point != curve.P.end();) {
-		 if (point != curve.P.end()-1) {
-			 //drawDot((*point), 0.10f, red);
-			 LINE myLine;
-			 myLine.P = { *point, *(point + 1) };
-			 drawLine(myLine, red, false);
-			 ++point;
-		 }
-		 else {
-			 ++point;
-		 }
-		 
-	 }
-	 
- }
+void drawCurve(CURVE curve) 
+{		 
+	for (auto point = curve.P.begin(); point != curve.P.end();) {
+		if (point != curve.P.end()-1) {
+			//drawDot((*point), 0.10f, red);
+			LINE myLine;
+			myLine.P = { *point, *(point + 1) };
+			drawLine(myLine, red, false);
+			++point;
+		}
+		else {
+			++point;
+		}		 
+	}	 
+}
 
 
 #endif

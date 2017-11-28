@@ -36,6 +36,12 @@ CAMERA camera;
 FRUSTUM centerFrustum;
 CURVE curve2;
 CURVE curve3;
+CURVE curve4;
+
+VECTOR3D lineDot1 = { 1,2,0 };
+VECTOR3D lineDot2 = { 3,4,0 };
+VECTOR3D lineDot3 = { 5,2,0 };
+VECTOR3D lineDot4 = { 1,-1,0 };
 
 double rotateangle = 0;
 
@@ -113,27 +119,19 @@ void Display(void)
 
     glViewport(0,0,camera.screenwidth,camera.screenheight);
 
-	LINE myLine;
-	VECTOR3D lineDot1 = { 1,2,0 };
-	VECTOR3D lineDot2 = { 3,4,0 };
-	VECTOR3D lineDot3 = { 5,2,0 };
-	VECTOR3D lineDot4 = { 5,2,0 };
+	
 	std::vector<VECTOR3D> vecArray4 = { lineDot1, lineDot2, lineDot3, lineDot4 };
 	std::vector<VECTOR3D> vecArray3 = { lineDot1, lineDot2, lineDot3 };
 	std::vector<VECTOR3D> vecArray2 = { lineDot1, lineDot2 };
-	myLine.P = vecArray3;
-	//drawLine(myLine, red, true);
-
-	drawDot(lineDot1, 0.10f, green);
-	drawDot(lineDot2, 0.10f, green);
-	drawDot(lineDot3, 0.10f, green);
 
 	CURVE c;
 	c.P = vecArray2;
 	curve2 = generateCurve(c);
 	c.P = vecArray3;
 	curve3 = generateCurve(c);
-    
+	c.P = vecArray4;
+	curve4 = generateCurve(c);
+
     Render();
     
     glutSwapBuffers();
@@ -151,75 +149,23 @@ void Render(void)
     
     glPushMatrix();
     glRotatef(rotateangle,0.0,1.0,0.0);
+	
+
+
+	//myLine.P = vecArray3;
+	//drawLine(myLine, red, true);
+
+	drawDot(lineDot1, 0.10f, green);
+	drawDot(lineDot2, 0.10f, green);
+	drawDot(lineDot3, 0.10f, green);
+	drawDot(lineDot4, 0.10f, green);
 
     drawAxis();
 	
 	drawCurve(curve2);
-
 	drawCurve(curve3);
+	drawCurve(curve4);
 
-    //// add
-    //{
-    //    VECTOR3D a = {3,2,0};
-    //    VECTOR3D b = {2,1,0};
-    //    
-		
-    //    drawDot(a,0.25, green);
-    //    drawDot(b,0.25, red);
-
-    //    VECTOR3D p = Add(a,b);
-    //    drawDot(p, 0.25);
-
-    //}
-    //
-    //// substract
-    //{
-    //    VECTOR3D a = {3,2,0};
-    //    VECTOR3D b = {2,1,0};
-    //    
-    //    drawDot(a,0.25, green);
-    //    drawDot(b,0.25, red);
-    //    
-    //    VECTOR3D p = Substract(a,b);
-    //    drawDot(p, 0.25);
-    //}
-
-    // //multiply
-    //{
-    //    VECTOR3D a = {3,2,0};
-    //    VECTOR3D b = {1,0.5,1};
-    //    
-    //    drawDot(a,0.25, green);
-    //    drawDot(b,0.25, red);
-    //    
-    //    VECTOR3D p = Multiply(a,b);
-    //    drawDot(p, 0.25);
-    //}
-    //
-    //// magnitude
-    //{
-    //    VECTOR3D a = {3,2,0};
-    //    VECTOR3D b = {2,2,0};
-
-    //    drawDot(a,0.25, green);
-    //    drawDot(b,0.25, red);
-
-    //    VECTOR3D p = Substract(a,b);
-    //    drawDot(p, 0.25);
-    //    
-    //    double magnitudeOfP = Magnitude(p);
-    //    printf("magnitude: %f\n", magnitudeOfP);
-		
-    //}
-    //
-    //// normalize
-    //{
-    //    VECTOR3D a = {2,3,0};
-    //    VECTOR3D b = Normalize(a);
-    //    drawDot(a,0.25, red);
-    //    drawDot(b,0.25, darkred);
-    //}
-    
     glPopMatrix();
 }
 

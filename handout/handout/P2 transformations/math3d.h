@@ -166,7 +166,11 @@ VECTOR3D Interpolate(CURVE curve, float t) {
 			return Add(MultiplyWithScalar((1 - t), curve.P[0]) , (MultiplyWithScalar(t, curve.P[1])));
 			break;
 		case 3:
-			return Add(Add((MultiplyWithScalar((1 - t)*(1  -t), curve.P[0])) , (MultiplyWithScalar((2 * t*(t - 1)), curve.P[1])) ) , (MultiplyWithScalar(t*t, curve.P[2])));
+			return Add(Add((MultiplyWithScalar((1 - t)*(1  -t), curve.P[0])) , (MultiplyWithScalar((2 * t * (1 - t)), curve.P[1])) ) , (MultiplyWithScalar(t*t, curve.P[2])));
+			break;
+		case 4:
+			//(1-t)3P1 + 3t(1-t)2P2 + 3t2(1-t)P3 + t3P3
+			return Add(Add((MultiplyWithScalar((1 - t)*(1 - t)*(1 - t), curve.P[0])) , (MultiplyWithScalar(3 * t*(1 - t)*(1 - t), curve.P[1])) ) , Add((3 * t*t*(1 - t), curve.P[2]) , (MultiplyWithScalar(t*t*t, curve.P[3]))));
 			break;
 		default:
 			break;
